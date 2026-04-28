@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import styles from '../styles/TextInput.module.css';
-import { useDebounceCallback } from '../../../shared/hooks/useDebounce.ts';
-import useMoviesTextSearch from '../hooks/useMoviesTextSearch.ts';
+import useTextInput from '../hooks/useTextInput.ts';
 
-const TextInput = () => {
-  const [value, setValue] = useState('');
-  const { data } = useMoviesTextSearch({ value });
-  const handleChange = useDebounceCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e?.target?.value);
-  }, 500);
-
-  console.log('data', data);
+interface Props {
+  setTextValue: (value: string) => void;
+  textValue: string;
+  //autocompleteValue: string;
+  setToggleAutocomplete: (value: boolean) => void;
+}
+const TextInput = ({
+  setTextValue,
+  textValue,
+  //autocompleteValue,
+  setToggleAutocomplete,
+}: Props) => {
+  const { handleChange, handleKeyDown } = useTextInput({
+    setTextValue,
+    setToggleAutocomplete,
+  });
   return (
     <div className={styles.textContainer}>
       <TextField
@@ -20,6 +26,8 @@ const TextInput = () => {
         variant="outlined"
         fullWidth
         onChange={handleChange}
+        value={textValue}
+        onKeyDown={handleKeyDown}
       />
     </div>
   );

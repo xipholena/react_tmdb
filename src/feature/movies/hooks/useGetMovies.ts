@@ -4,7 +4,7 @@ import { getMoviesByTitle } from '../../../shared/api/api.ts';
 interface Params {
   value: string;
 }
-const useMoviesTextSearch = ({ value }: Params) => {
+const useGetMovies = ({ value }: Params) => {
   const [data, setData] = useState<MoviesResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -37,4 +37,4 @@ const useMoviesTextSearch = ({ value }: Params) => {
   };
 };
 
-export default useMoviesTextSearch;
+export default useGetMovies;
