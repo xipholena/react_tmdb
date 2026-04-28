@@ -1,11 +1,16 @@
 import styles from '../styles/ResultsHeader.module.css';
 
-const ResultsHeader = () => {
+interface Props {
+  amount?: number;
+  textValue?: string;
+}
+
+const ResultsHeader = ({ amount = 0, textValue = '' }: Props) => {
   return (
     <div className={styles.resultsHeader}>
-      <h2 className={styles.resultsTitle}>Search Results</h2>
+      <h2 className={styles.resultsTitle}>Search Results for &#34;{textValue}&#34;</h2>
       <span className={styles.resultsCount} id="resultsCount">
-        0 movies found
+        {amount} movies found
       </span>
     </div>
   );

@@ -19,6 +19,10 @@
     position: relative;
     overflow: hidden;
 }
+.movie-poster img {
+    width: 100%;
+    object-fit: cover;
+}
 
 /* Placeholder for movie poster image */
 .movie-poster::before {
