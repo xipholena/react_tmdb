@@ -24,7 +24,6 @@
     object-fit: cover;
 }
 
-/* Placeholder for movie poster image */
 .movie-poster::before {
     content: "🎬";
     position: absolute;

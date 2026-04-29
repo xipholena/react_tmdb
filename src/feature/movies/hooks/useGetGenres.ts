@@ -1,8 +1,9 @@
 import { Genre } from '../../../shared/api/interfaces.ts';
 import { useCallback, useEffect, useState } from 'react';
-import { getGenresArray } from '../../../shared/api/api.ts';
+import { fetchGenresArray } from '../../../shared/api/api.ts';
 import useLocalStorage from '../../../shared/hooks/useLocalStorage.ts';
 import { StorageKeys } from '../../../shared/enums.ts';
+import { toast } from 'react-toastify';
 
 interface Params {
   ids?: number[] | null;
@@ -21,19 +22,21 @@ const useGetGenres = ({ ids }: Params) => {
     try {
       setError(null);
       setIsLoading(true);
-      const response = await getGenresArray();
+      const response = await fetchGenresArray();
       if (!response?.data?.genres) return;
       setStorageValue(StorageKeys.genres, response?.data?.genres);
     } catch (e: unknown) {
       if (e instanceof Error) {
         setError(e);
+        toast.error('Something went wrong while loading genres');
       } else {
         setError(new Error('Unexpected error in fetch genres'));
+        toast.error('Something went wrong while loading genres');
       }
     } finally {
       setIsLoading(false);
     }
-  }, [setStorageValue]);
+  }, [setStorageValue, storedGenres?.length]);
 
   useEffect(() => {
     getGenres();

@@ -31,3 +31,30 @@ export interface Genre {
   id: number;
   name: string;
 }
+
+export interface Language {
+  iso_639_1: string;
+  english_name: string;
+  name: string;
+}
+
+export interface Country {
+  iso_3166_1: string;
+  english_name: string;
+  native_name: string;
+}
+
+export interface AdvancedOptions {
+  language: string;
+  page: number;
+  include_adult: boolean;
+  region: string;
+  year: number;
+  primary_release_year: number;
+}
+
+export interface TextQueryParams {
+  query: string;
+}
+
+export type QueryParams = AdvancedOptions & TextQueryParams;

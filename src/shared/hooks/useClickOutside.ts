@@ -2,10 +2,7 @@ import { useEffect, useRef } from 'react';
 
 type EventType = MouseEvent | TouchEvent;
 
-export function useClickOutside(
-  //ref: React.RefObject<T>,
-  handler: (event: EventType) => void
-) {
+export function useClickOutside(handler: (event: EventType) => void) {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const savedHandler = useRef(handler);
