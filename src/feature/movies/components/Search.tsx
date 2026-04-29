@@ -1,8 +1,9 @@
 import TextInput from './TextInput.tsx';
 import Autocomplete from './Autocomplete.tsx';
-import { MoviesResponse } from '../../../shared/api/interfaces.ts';
+import { AdvancedOptions, MoviesResponse } from '../../../shared/api/interfaces.ts';
 import useGetGenres from '../hooks/useGetGenres.ts';
-
+import AdvancedSearch from './AdvancedSearch.tsx';
+import style from '../styles/Search.module.css';
 interface Props {
   setTextValue: (value: string) => void;
   textValue: string;
@@ -11,6 +12,8 @@ interface Props {
   toggleAutocomplete: boolean;
   data: MoviesResponse | null;
   setAutocompleteValue: (value: string) => void;
+  updateOptions: (key: string, value: string | number | boolean) => void;
+  advancedOptions: AdvancedOptions;
 }
 
 const Search = ({
@@ -20,25 +23,32 @@ const Search = ({
   toggleAutocomplete,
   data,
   setAutocompleteValue,
+  updateOptions,
+  advancedOptions,
 }: Props) => {
   useGetGenres({});
+
   return (
     <div className="box">
       <form>
-        <TextInput
-          setTextValue={setTextValue}
-          textValue={textValue}
-          setToggleAutocomplete={setToggleAutocomplete}
-        />
+        <div className={style.container}>
+          <TextInput
+            setTextValue={setTextValue}
+            textValue={textValue}
+            setToggleAutocomplete={setToggleAutocomplete}
+          />
+
+          {toggleAutocomplete ? (
+            <Autocomplete
+              setToggleAutocomplete={setToggleAutocomplete}
+              data={data}
+              setTextValue={setTextValue}
+              setAutocompleteValue={setAutocompleteValue}
+            />
+          ) : null}
+        </div>
+        <AdvancedSearch updateOptions={updateOptions} advancedOptions={advancedOptions} />
       </form>
-      {toggleAutocomplete ? (
-        <Autocomplete
-          setToggleAutocomplete={setToggleAutocomplete}
-          data={data}
-          setTextValue={setTextValue}
-          setAutocompleteValue={setAutocompleteValue}
-        />
-      ) : null}
     </div>
   );
 };

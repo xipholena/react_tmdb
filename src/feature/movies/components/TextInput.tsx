@@ -5,15 +5,9 @@ import useTextInput from '../hooks/useTextInput.ts';
 interface Props {
   setTextValue: (value: string) => void;
   textValue: string;
-  //autocompleteValue: string;
   setToggleAutocomplete: (value: boolean) => void;
 }
-const TextInput = ({
-  setTextValue,
-  textValue,
-  //autocompleteValue,
-  setToggleAutocomplete,
-}: Props) => {
+const TextInput = ({ setTextValue, textValue, setToggleAutocomplete }: Props) => {
   const { handleChange, handleKeyDown } = useTextInput({
     setTextValue,
     setToggleAutocomplete,

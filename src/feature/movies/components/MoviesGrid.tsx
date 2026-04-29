@@ -7,10 +7,10 @@ interface Props {
 }
 const MoviesGrid = ({ data }: Props) => {
   return (
-    <div className={style.moviesGrid} id="moviesGrid">
+    <div className={style.moviesGrid}>
       {data?.results?.length
         ? data?.results?.map((movie) => <MovieCard key={movie.id} movie={movie} />)
-        : 'not forund'}
+        : 'No movies found... Try our search!'}
     </div>
   );
 };

@@ -1,16 +1,17 @@
 .autocomplete-dropdown {
-   /*position: absolute;*/
-    top: 100%;
+   position: absolute;
+    bottom: 0;
     left: 0;
     right: 0;
     background: white;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     max-height: 300px;
+    width: 80%;
     overflow-y: auto;
     z-index: 10002;
-    margin-top: 0.5rem;
-   /* display: none; /* Show this when user types - connect to API */
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
     border: 1px solid rgba(118, 75, 162, 0.2);
 
 }
