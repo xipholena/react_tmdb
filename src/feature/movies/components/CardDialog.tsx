@@ -24,6 +24,7 @@ const CardDialog = ({ open, setOpen, scroll, movie }: Props) => {
     <React.Fragment>
       <Dialog
         open={open}
+        onClose={() => setOpen(false)}
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
