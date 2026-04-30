@@ -6,28 +6,17 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SelectInput from '../../../shared/components/SelectInput.tsx';
 import NumberInput from '../../../shared/components/NumberInput/NumberInput.tsx';
 import CheckboxInput from '../../../shared/components/CheckboxInput.tsx';
-import useGetCountries from '../hooks/useGetCountries.ts';
-import useGetLanguages from '../hooks/useGetLanguages.ts';
 import { AdvancedOptions } from '../../../shared/api/interfaces.ts';
 import { ParameterKeys } from '../../../shared/enums.ts';
 import style from '../styles/Search.module.css';
+import useAdvancedSearch from '../hooks/useAdvancedSearch.ts';
 interface Props {
   updateOptions: (key: string, value: string | number | boolean) => void;
   advancedOptions: AdvancedOptions;
 }
 
 const AdvancedSearch = ({ updateOptions, advancedOptions }: Props) => {
-  const { countries } = useGetCountries();
-  const { languages } = useGetLanguages();
-  const countryOptions = countries.map(({ iso_3166_1, english_name }) => ({
-    value: iso_3166_1,
-    text: english_name,
-  }));
-  const languageOptions = languages.map(({ iso_639_1, english_name }) => ({
-    value: iso_639_1,
-    text: english_name,
-  }));
-
+  const { languageOptions, countryOptions } = useAdvancedSearch();
   return (
     <>
       <Accordion>
