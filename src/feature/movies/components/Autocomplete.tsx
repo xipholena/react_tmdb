@@ -30,7 +30,7 @@ const Autocomplete = ({
   };
 
   return (
-    <div ref={ref} className={style.autocompleteDropdown} id="autocompleteDropdown">
+    <div ref={ref} className={style.autocompleteDropdown}>
       {data?.results?.map((movie) => (
         <div
           key={movie.id}

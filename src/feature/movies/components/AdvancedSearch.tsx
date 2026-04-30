@@ -20,16 +20,12 @@ const AdvancedSearch = ({ updateOptions, advancedOptions }: Props) => {
   return (
     <>
       <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-        >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content">
           <Typography component="span">Advanced Search Options</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <div>
-            <div className={style.advancedFilters} id="filtersContent">
+            <div className={style.advancedFilters}>
               <div className={style.field}>
                 <SelectInput
                   label="Language"
