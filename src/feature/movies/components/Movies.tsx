@@ -20,7 +20,7 @@ const Movies = () => {
     }),
     [advancedOptions, debouncedTextValue]
   );
-  const { data } = useGetMovies({
+  const { data, isLoading } = useGetMovies({
     values,
   });
   const updateOptions = (key: string, value: string | number | boolean) => {
@@ -44,7 +44,7 @@ const Movies = () => {
         data={data}
       />
 
-      <MoviesList data={data} textValue={textValue} />
+      <MoviesList data={data} isLoading={isLoading} textValue={textValue} />
     </>
   );
 };

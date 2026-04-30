@@ -1,30 +1,45 @@
 import style from '../styles/MovieCard.module.css';
 import { Movie } from '../../../shared/api/interfaces.ts';
-import Genres from './Genres.tsx';
+import useGetGenres from '../hooks/useGetGenres.ts';
+import Spinner from './Spinner.tsx';
+import CardDialog from './CardDialog.tsx';
+import * as React from 'react';
+import { DialogProps } from '@mui/material/Dialog';
 
 interface Props {
   movie: Movie;
 }
+const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 const MovieCard = ({ movie }: Props) => {
-  return (
-    <div className={style.movieCard}>
-      <div className={style.moviePoster}>
-        <img alt="movie icon" src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`} />
-        <span className={style.movieRating}>{movie.vote_average.toFixed(1)}</span>
-      </div>
-      <div className={style.movieInfo}>
-        <h3 className={style.movieTitle}>{movie.title}</h3>
-        {movie.release_date ? (
-          <div className={style.movieYear}>{movie.release_date?.split('-')[0]}</div>
-        ) : (
-          ''
-        )}
-        {movie.overview ? <p className={style.movieOverview}>{movie.overview}</p> : ''}
+  const [open, setOpen] = React.useState(false);
+  const [scroll, setScroll] = React.useState<DialogProps['scroll']>('paper');
 
-        <Genres
-          ids={movie.genre_ids}
-          render={(genres) => (
+  const handleClickOpen = (scrollType: DialogProps['scroll']) => () => {
+    setOpen(true);
+    setScroll(scrollType);
+  };
+  const { genres, isLoading } = useGetGenres({ ids: movie.genre_ids });
+  return (
+    <>
+      <CardDialog open={open} setOpen={setOpen} scroll={scroll} movie={movie} />
+      <div className={style.movieCard} onClick={handleClickOpen('paper')}>
+        <div className={style.moviePoster}>
+          <img alt="movie icon" src={`${IMAGE_BASE_URL}${movie?.poster_path}`} />
+          <span className={style.movieRating}>{movie.vote_average.toFixed(1)}</span>
+        </div>
+        <div className={style.movieInfo}>
+          <h3 className={style.movieTitle}>{movie.title}</h3>
+          {movie.release_date ? (
+            <div className={style.movieYear}>{movie.release_date?.split('-')[0]}</div>
+          ) : (
+            ''
+          )}
+          {movie.overview ? <p className={style.movieOverview}>{movie.overview}</p> : ''}
+
+          {isLoading ? (
+            <Spinner />
+          ) : (
             <div className={style.movieGenres}>
               {genres.map((genre) => (
                 <span key={genre.id} className={style.genreTag}>
@@ -33,9 +48,9 @@ const MovieCard = ({ movie }: Props) => {
               ))}
             </div>
           )}
-        />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
