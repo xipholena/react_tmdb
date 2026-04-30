@@ -5,18 +5,17 @@ import useGetGenres from '../hooks/useGetGenres.ts';
 import AdvancedSearch from './AdvancedSearch.tsx';
 import style from '../styles/Search.module.css';
 interface Props {
-  setTextValue: (value: string) => void;
   textValue: string;
   autocompleteValue: string;
-  setToggleAutocomplete: (value: boolean) => void;
   toggleAutocomplete: boolean;
   data: MoviesResponse | null;
-  setAutocompleteValue: (value: string) => void;
   updateOptions: (key: string, value: string | number | boolean) => void;
   advancedOptions: AdvancedOptions;
-  setTouched: (value: boolean) => void;
+  setTextValue: React.Dispatch<React.SetStateAction<string>>;
+  setAutocompleteValue: React.Dispatch<React.SetStateAction<string>>;
+  setToggleAutocomplete: React.Dispatch<React.SetStateAction<boolean>>;
+  setTouched: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
 const Search = ({
   setTextValue,
   textValue,

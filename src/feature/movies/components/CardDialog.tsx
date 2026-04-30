@@ -5,10 +5,11 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Movie } from '../../../shared/api/interfaces.ts';
 import style from '../styles/CardDialog.module.css';
+import useCardDialog from '../hooks/useCardDialog.ts';
 
 interface Props {
   open: boolean;
-  setOpen: (arg0: boolean) => void;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   scroll: DialogProps['scroll'];
   movie: Movie;
 }
@@ -16,25 +17,13 @@ interface Props {
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 const CardDialog = ({ open, setOpen, scroll, movie }: Props) => {
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const descriptionElementRef = React.useRef<HTMLElement>(null);
-  React.useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
-        descriptionElement.focus();
-      }
-    }
-  }, [open]);
-
+  useCardDialog({
+    open,
+  });
   return (
     <React.Fragment>
       <Dialog
         open={open}
-        onClose={handleClose}
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
@@ -49,7 +38,9 @@ const CardDialog = ({ open, setOpen, scroll, movie }: Props) => {
           )}
           <CloseIcon
             className={style.movieCardClose}
-            onClick={handleClose}
+            onClick={() => {
+              setOpen(false);
+            }}
             aria-label="close dialog"
           />
 

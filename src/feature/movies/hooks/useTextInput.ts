@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface Props {
-  setTextValue: (value: string) => void;
-  setToggleAutocomplete: (value: boolean) => void;
+  setTextValue: React.Dispatch<React.SetStateAction<string>>;
+  setToggleAutocomplete: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const useTextInput = ({ setTextValue, setToggleAutocomplete }: Props) => {

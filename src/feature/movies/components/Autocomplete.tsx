@@ -5,9 +5,9 @@ import Genres from './Genres.tsx';
 
 interface Props {
   data: MoviesResponse | null;
-  setTextValue: (value: string) => void;
-  setAutocompleteValue: (value: string) => void;
-  setToggleAutocomplete: (value: boolean) => void;
+  setTextValue: React.Dispatch<React.SetStateAction<string>>;
+  setAutocompleteValue: React.Dispatch<React.SetStateAction<string>>;
+  setToggleAutocomplete: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Autocomplete = ({

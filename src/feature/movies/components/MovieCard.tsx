@@ -15,15 +15,17 @@ const MovieCard = ({ movie }: Props) => {
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState<DialogProps['scroll']>('paper');
 
-  const handleClickOpen = (scrollType: DialogProps['scroll']) => () => {
-    setOpen(true);
-    setScroll(scrollType);
-  };
   const { genres, isLoading } = useGetGenres({ ids: movie.genre_ids });
   return (
     <>
       <CardDialog open={open} setOpen={setOpen} scroll={scroll} movie={movie} />
-      <div className={style.movieCard} onClick={handleClickOpen('paper')}>
+      <div
+        className={style.movieCard}
+        onClick={() => {
+          setOpen(true);
+          setScroll('paper');
+        }}
+      >
         <div className={style.moviePoster}>
           <img alt="movie icon" src={`${IMAGE_BASE_URL}${movie?.poster_path}`} />
           <span className={style.movieRating}>{movie.vote_average.toFixed(1)}</span>
