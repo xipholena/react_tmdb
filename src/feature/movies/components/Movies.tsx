@@ -10,7 +10,7 @@ const Movies = () => {
   const [autocompleteValue, setAutocompleteValue] = useState('');
   const [toggleAutocomplete, setToggleAutocomplete] = useState(false);
   const [advancedOptions, setAdvancedOptions] = useState(DEFAULT_ADVANCED_OPTIONS);
-
+  const [touched, setTouched] = useState(false);
   const { values, updateOptions } = useMovies({ textValue, setAdvancedOptions, advancedOptions });
   const { data, isLoading } = useGetMovies({
     values,
@@ -27,9 +27,10 @@ const Movies = () => {
         setToggleAutocomplete={setToggleAutocomplete}
         toggleAutocomplete={toggleAutocomplete}
         data={data}
+        setTouched={setTouched}
       />
 
-      <MoviesList data={data} isLoading={isLoading} textValue={textValue} />
+      {touched && <MoviesList data={data} isLoading={isLoading} textValue={textValue} />}
     </>
   );
 };

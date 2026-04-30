@@ -14,6 +14,7 @@ interface Props {
   setAutocompleteValue: (value: string) => void;
   updateOptions: (key: string, value: string | number | boolean) => void;
   advancedOptions: AdvancedOptions;
+  setTouched: (value: boolean) => void;
 }
 
 const Search = ({
@@ -25,11 +26,12 @@ const Search = ({
   setAutocompleteValue,
   updateOptions,
   advancedOptions,
+  setTouched,
 }: Props) => {
   useGetGenres({});
 
   return (
-    <div className="box">
+    <div className="box" onClick={() => setTouched(true)}>
       <form>
         <div className={style.container}>
           <TextInput
