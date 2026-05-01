@@ -20,7 +20,7 @@ const useMovies = ({ textValue, advancedOptions, setAdvancedOptions }: Params) =
   );
 
   const updateOptions = (key: string, value: string | number | boolean) => {
-    setAdvancedOptions((prev) => ({
+    setAdvancedOptions((prev: AdvancedOptions) => ({
       ...prev,
       [key]: value,
     }));
