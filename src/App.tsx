@@ -3,17 +3,21 @@ import Header from './layout/header/Header.tsx';
 import Movies from './feature/movies/components/Movies.tsx';
 import './App.css';
 import './layout/styles.css';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorPage from './layout/error/ErrorPage.tsx';
 
 const App = () => {
   return (
     <>
-      <ToastContainer />
-      <main>
-        <div className="container">
-          <Header />
-          <Movies />
-        </div>
-      </main>
+      <ErrorBoundary FallbackComponent={ErrorPage}>
+        <ToastContainer />
+        <main>
+          <div className="container">
+            <Header />
+            <Movies />
+          </div>
+        </main>
+      </ErrorBoundary>
     </>
   );
 };
