@@ -1,9 +1,9 @@
-import { Language } from '../../../shared/api/interfaces.ts';
 import { useCallback, useEffect, useState } from 'react';
-import { fetchLanguages } from '../../../shared/api/api.ts';
-import useLocalStorage from '../../../shared/hooks/useLocalStorage.ts';
-import { StorageKeys } from '../../../shared/enums.ts';
 import { toast } from 'react-toastify';
+import { Language } from '../../../shared/api/interfaces.ts';
+import { fetchLanguages } from '../../../shared/api/api.ts';
+import { StorageKeys } from '../../../shared/enums.ts';
+import useLocalStorage from '../../../shared/hooks/useLocalStorage.ts';
 
 const useGetLanguages = () => {
   const [isLoading, setIsLoading] = useState(false);

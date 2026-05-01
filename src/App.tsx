@@ -1,8 +1,8 @@
 import { ToastContainer } from 'react-toastify';
-import './App.css';
-import './layout/styles.css';
 import Header from './layout/header/Header.tsx';
 import Movies from './feature/movies/components/Movies.tsx';
+import './App.css';
+import './layout/styles.css';
 
 const App = () => {
   return (

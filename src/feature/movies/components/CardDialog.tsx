@@ -1,11 +1,10 @@
-import * as React from 'react';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
 import CloseIcon from '@mui/icons-material/Close';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Movie } from '../../../shared/api/interfaces.ts';
-import style from '../styles/CardDialog.module.css';
 import useCardDialog from '../hooks/useCardDialog.ts';
+import style from '../styles/CardDialog.module.css';
 
 interface Props {
   open: boolean;
@@ -21,7 +20,7 @@ const CardDialog = ({ open, setOpen, scroll, movie }: Props) => {
     open,
   });
   return (
-    <React.Fragment>
+    <>
       <Dialog
         open={open}
         onClose={() => setOpen(false)}
@@ -103,7 +102,7 @@ const CardDialog = ({ open, setOpen, scroll, movie }: Props) => {
           </div>
         </div>
       </Dialog>
-    </React.Fragment>
+    </>
   );
 };
 export default CardDialog;

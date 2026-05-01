@@ -1,8 +1,10 @@
 import SkeletonCard from './SkeletonCard.tsx';
 import style from '../styles/SkeletonGrid.module.css';
+
 interface Props {
   amount: number;
 }
+
 const SkeletonGrid = ({ amount }: Props) => {
   return (
     <div className={style.skeletonGrid}>

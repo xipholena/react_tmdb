@@ -1,7 +1,7 @@
-import style from '../styles/Autocomplete.module.css';
 import { MoviesResponse } from '../../../shared/api/interfaces.ts';
-import useClickOutside from '../../../shared/hooks/useClickOutside.ts';
 import Genres from './Genres.tsx';
+import useClickOutside from '../../../shared/hooks/useClickOutside.ts';
+import style from '../styles/Autocomplete.module.css';
 
 interface Props {
   data: MoviesResponse | null;
@@ -16,8 +16,10 @@ const Autocomplete = ({
   setAutocompleteValue,
   setToggleAutocomplete,
 }: Props) => {
-  const { ref } = useClickOutside(() => {
-    setToggleAutocomplete(false);
+  const { ref } = useClickOutside({
+    handler: () => {
+      setToggleAutocomplete(false);
+    },
   });
 
   if (!data) return null;

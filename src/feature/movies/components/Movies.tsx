@@ -1,8 +1,8 @@
+import { useState } from 'react';
+import { DEFAULT_ADVANCED_OPTIONS } from '../../../shared/constants.ts';
 import MoviesList from './MoviesList.tsx';
 import Search from './Search.tsx';
-import { useState } from 'react';
 import useGetMovies from '../hooks/useGetMovies.ts';
-import { DEFAULT_ADVANCED_OPTIONS } from '../../../shared/constants.ts';
 import useMovies from '../hooks/useMovies.ts';
 
 const Movies = () => {

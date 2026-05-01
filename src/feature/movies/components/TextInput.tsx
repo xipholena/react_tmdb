@@ -1,6 +1,6 @@
 import TextField from '@mui/material/TextField';
-import styles from '../styles/TextInput.module.css';
 import useTextInput from '../hooks/useTextInput.ts';
+import styles from '../styles/TextInput.module.css';
 
 interface Props {
   textValue: string;

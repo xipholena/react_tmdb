@@ -1,6 +1,6 @@
+import { MoviesResponse } from '../../../shared/api/interfaces.ts';
 import ResultsHeader from './ResultsHeader.tsx';
 import MoviesGrid from './MoviesGrid.tsx';
-import { MoviesResponse } from '../../../shared/api/interfaces.ts';
 import SkeletonGrid from './SkeletonGrid.tsx';
 interface Props {
   data: MoviesResponse | null;

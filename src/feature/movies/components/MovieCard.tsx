@@ -1,10 +1,10 @@
-import style from '../styles/MovieCard.module.css';
+import { useState } from 'react';
+import { DialogProps } from '@mui/material/Dialog';
 import { Movie } from '../../../shared/api/interfaces.ts';
-import useGetGenres from '../hooks/useGetGenres.ts';
 import Spinner from './Spinner.tsx';
 import CardDialog from './CardDialog.tsx';
-import * as React from 'react';
-import { DialogProps } from '@mui/material/Dialog';
+import useGetGenres from '../hooks/useGetGenres.ts';
+import style from '../styles/MovieCard.module.css';
 
 interface Props {
   movie: Movie;
@@ -12,8 +12,8 @@ interface Props {
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 const MovieCard = ({ movie }: Props) => {
-  const [open, setOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState<DialogProps['scroll']>('paper');
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState<DialogProps['scroll']>('paper');
 
   const { genres, isLoading } = useGetGenres({ ids: movie.genre_ids });
   return (

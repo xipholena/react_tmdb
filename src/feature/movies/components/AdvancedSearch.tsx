@@ -8,8 +8,9 @@ import NumberInput from '../../../shared/components/NumberInput/NumberInput.tsx'
 import CheckboxInput from '../../../shared/components/CheckboxInput.tsx';
 import { AdvancedOptions } from '../../../shared/api/interfaces.ts';
 import { ParameterKeys } from '../../../shared/enums.ts';
-import style from '../styles/Search.module.css';
 import useAdvancedSearch from '../hooks/useAdvancedSearch.ts';
+import style from '../styles/Search.module.css';
+
 interface Props {
   updateOptions: (key: string, value: string | number | boolean) => void;
   advancedOptions: AdvancedOptions;

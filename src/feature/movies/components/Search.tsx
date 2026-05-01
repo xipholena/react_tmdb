@@ -1,9 +1,10 @@
+import { AdvancedOptions, MoviesResponse } from '../../../shared/api/interfaces.ts';
 import TextInput from './TextInput.tsx';
 import Autocomplete from './Autocomplete.tsx';
-import { AdvancedOptions, MoviesResponse } from '../../../shared/api/interfaces.ts';
-import useGetGenres from '../hooks/useGetGenres.ts';
 import AdvancedSearch from './AdvancedSearch.tsx';
+import useGetGenres from '../hooks/useGetGenres.ts';
 import style from '../styles/Search.module.css';
+
 interface Props {
   textValue: string;
   autocompleteValue: string;
@@ -16,6 +17,7 @@ interface Props {
   setToggleAutocomplete: React.Dispatch<React.SetStateAction<boolean>>;
   setTouched: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 const Search = ({
   setTextValue,
   textValue,

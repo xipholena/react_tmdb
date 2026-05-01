@@ -1,6 +1,6 @@
+import Spinner from './Spinner.tsx';
 import { Genre } from '../../../shared/api/interfaces.ts';
 import useGetGenres from '../hooks/useGetGenres.ts';
-import Spinner from './Spinner.tsx';
 
 interface Props {
   ids?: number[] | null;

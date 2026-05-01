@@ -1,4 +1,3 @@
-import React from 'react';
 import style from './NumberInput.module.css';
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

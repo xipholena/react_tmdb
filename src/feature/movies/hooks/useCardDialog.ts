@@ -1,11 +1,12 @@
-import * as React from 'react';
+import { useEffect, useRef } from 'react';
 
 interface Params {
   open?: boolean;
 }
+
 const useCardDialog = ({ open }: Params) => {
-  const descriptionElementRef = React.useRef<HTMLElement>(null);
-  React.useEffect(() => {
+  const descriptionElementRef = useRef<HTMLElement>(null);
+  useEffect(() => {
     if (open) {
       const { current: descriptionElement } = descriptionElementRef;
       if (descriptionElement !== null) {
