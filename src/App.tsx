@@ -14,7 +14,7 @@ const App = () => {
         <main>
           <div className="container">
             <Header />
-            <Movies />п
+            <Movies />
           </div>
         </main>
       </ErrorBoundary>
