@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { MoviesResponse, QueryParams } from '../../../shared/api/interfaces.ts';
-import { fetchMovies } from '../../../shared/api/api.ts';
+import { MoviesResponse, QueryParams } from '@/shared/api/interfaces.ts';
+import { fetchMovies } from '@/shared/api/api.ts';
 
 interface Params {
   values: QueryParams;

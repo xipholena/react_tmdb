@@ -1,5 +1,5 @@
 import Spinner from './Spinner.tsx';
-import { Genre } from '../../../shared/api/interfaces.ts';
+import { Genre } from '@/shared/api/interfaces.ts';
 import useGetGenres from '../hooks/useGetGenres.ts';
 
 interface Props {

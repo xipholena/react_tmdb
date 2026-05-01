@@ -1,6 +1,6 @@
-import { MoviesResponse } from '../../../shared/api/interfaces.ts';
+import { MoviesResponse } from '@/shared/api/interfaces.ts';
 import Genres from './Genres.tsx';
-import useClickOutside from '../../../shared/hooks/useClickOutside.ts';
+import useClickOutside from '@/shared/hooks/useClickOutside.ts';
 import style from '../styles/Autocomplete.module.css';
 
 interface Props {

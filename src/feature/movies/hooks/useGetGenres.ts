@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { fetchGenresArray } from '../../../shared/api/api.ts';
-import { StorageKeys } from '../../../shared/enums.ts';
-import { Genre } from '../../../shared/api/interfaces.ts';
-import useLocalStorage from '../../../shared/hooks/useLocalStorage.ts';
+import { fetchGenresArray } from '@/shared/api/api.ts';
+import { StorageKeys } from '@/shared/enums.ts';
+import { Genre } from '@/shared/api/interfaces.ts';
+import useLocalStorage from '@/shared/hooks/useLocalStorage.ts';
 
 interface Params {
   ids?: number[] | null;

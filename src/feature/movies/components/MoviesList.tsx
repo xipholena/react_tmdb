@@ -1,4 +1,4 @@
-import { MoviesResponse } from '../../../shared/api/interfaces.ts';
+import { MoviesResponse } from '@/shared/api/interfaces.ts';
 import ResultsHeader from './ResultsHeader.tsx';
 import MoviesGrid from './MoviesGrid.tsx';
 import SkeletonGrid from './SkeletonGrid.tsx';

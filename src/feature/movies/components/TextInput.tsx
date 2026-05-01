@@ -1,6 +1,6 @@
 import TextField from '@mui/material/TextField';
 import useTextInput from '../hooks/useTextInput.ts';
-import styles from '../styles/TextInput.module.css';
+import style from '../styles/TextInput.module.css';
 
 interface Props {
   textValue: string;
@@ -13,7 +13,7 @@ const TextInput = ({ setTextValue, textValue, setToggleAutocomplete }: Props) =>
     setToggleAutocomplete,
   });
   return (
-    <div className={styles.textContainer}>
+    <div className={style.textContainer}>
       <TextField
         id="outlined-basic"
         label="Search for movies..."

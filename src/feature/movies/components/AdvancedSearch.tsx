@@ -3,11 +3,11 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import SelectInput from '../../../shared/components/SelectInput.tsx';
-import NumberInput from '../../../shared/components/NumberInput/NumberInput.tsx';
-import CheckboxInput from '../../../shared/components/CheckboxInput.tsx';
-import { AdvancedOptions } from '../../../shared/api/interfaces.ts';
-import { ParameterKeys } from '../../../shared/enums.ts';
+import SelectInput from '@/shared/components/SelectInput.tsx';
+import NumberInput from '@/shared/components/NumberInput/NumberInput.tsx';
+import CheckboxInput from '@/shared/components/CheckboxInput.tsx';
+import { AdvancedOptions } from '@/shared/api/interfaces.ts';
+import { ParameterKeys } from '@/shared/enums.ts';
 import useAdvancedSearch from '../hooks/useAdvancedSearch.ts';
 import style from '../styles/Search.module.css';
 

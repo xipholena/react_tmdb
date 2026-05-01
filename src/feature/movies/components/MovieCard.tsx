@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { DialogProps } from '@mui/material/Dialog';
-import { Movie } from '../../../shared/api/interfaces.ts';
+import { Movie } from '@/shared/api/interfaces.ts';
 import Spinner from './Spinner.tsx';
 import CardDialog from './CardDialog.tsx';
 import useGetGenres from '../hooks/useGetGenres.ts';

@@ -1,4 +1,4 @@
-import { AdvancedOptions, MoviesResponse } from '../../../shared/api/interfaces.ts';
+import { AdvancedOptions, MoviesResponse } from '@/shared/api/interfaces.ts';
 import TextInput from './TextInput.tsx';
 import Autocomplete from './Autocomplete.tsx';
 import AdvancedSearch from './AdvancedSearch.tsx';
