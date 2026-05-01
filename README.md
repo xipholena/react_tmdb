@@ -1,27 +1,73 @@
-# React + TypeScript + Vite
+# Movies App
+### Опис проекту
+Movies App — це веб-застосунок для пошуку та перегляду інформації про фільми.
+Користувач може знаходити фільми за різними параметрами, переглядати деталі та взаємодіяти з інтерфейсом у зручний спосіб.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Основний функціонал:
+  - Пошук фільмів
+  - Розширений фільтр (advanced search)
+  - Відображення результатів у вигляді карток
+  - Перегляд детальної інформації у модальному вікні
+  - Обробка помилок (Error Boundary)
+  - Нотифікації (toast)
 
-Currently, two official plugins are available:
+## Встановлення та запуск
+###  1. Клонування репозиторію
+   git clone <your-repo-link>
+   cd <project-folder>
+###  2. Встановлення залежностей
+   npm install
+###  3. Запуск у режимі розробки
+   npm run dev
+###  4. Білд проекту
+   npm run build
+###  5. Перегляд production-білду
+   npm run preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Форматування:
+  - npm run lint — перевірка коду ESLint (без warning'ів)
+  - npm run format — автоформатування Prettier
+  - npm run format:check — перевірка форматування
 
-## Expanding the ESLint configuration
+## Технології та бібліотеки
+### Основні:
+  - React
+  - TypeScript
+  - Vite
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### UI та стилі:
+ - MUI (Material UI)
+ - CSS Modules (Vite)
+### Додатково:
+  - react-toastify — нотифікації
+  - eslint + prettier — якість коду
 
-- Configure the top-level `parserOptions` property like this:
+## Архітектура
+Проєкт побудований за feature-based architecture:
+    src/
+    features/
+    movies/
+    components/
+    hooks/
+    api/
+    types/
+### Чому так:
+Локалізація логіки по фічах
+Масштабованість (легко додавати нові фічі)
+Краще розділення відповідальностей
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Інші рішення
+Інтерфейси відповідей (фільми, жанри)  містять необов’язкові поля які можуть бути null. Я вирішила вказати їх такими, бо в документації я побачила типізацію і лише для деяких Default  значення. Тому, я припустила, що краще всі значення окрім Default помітити максимально невідомими і потім перевіряти
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+В рамках тестового завдання використано Bearer token через Authorization header, відповідно до вимог API.
+У комерційному production-застосунку авторизація була б бути реалізована через HttpOnly cookies з опцією withCredentials від axios, що забезпечує вищий рівень безпеки та зменшує ризик XSS-атак, за умови підтримки з боку бекенду.
+
+Оскільки API повертає не занадто великі масиви країн, мов і жанрів і не має параметрів пошуку для них, то я вирішила робити запит або кешувати, замість кешу використала localStorage. На реальному проєкти я б використала кешування від бібліотек глобального стану типу Redux, Tanstack тощо в залежності від проєкту.
+
+### Додаткові фічі
+  - Debounced search (оптимізація API запитів)
+  - Error handling з fallback UI
+  - Toast-нотифікації для UX
+  - Адаптивний UI
+  - Використання custom hooks для повторно використовуваної логіки
+  - focus management для модального вікна
