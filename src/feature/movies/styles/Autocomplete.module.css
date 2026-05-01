@@ -9,7 +9,7 @@
     max-height: 300px;
     width: 80%;
     overflow-y: auto;
-    z-index: 10002;
+    z-index: var(--z-index-autocomplete);
     left: 50%;
     transform: translateX(-50%) translateY(100%);
     border: 1px solid rgba(118, 75, 162, 0.2);

@@ -32,14 +32,15 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  z-index: 3;
+  z-index: var(--z-index-movie-card-close);
   color: #fff;
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(4px);
+  cursor: pointer;
 }
 .movie-card-content {
   position: relative;
-  z-index: 2;
+  z-index: var(--z-index-movie-card-content);
   display: grid;
   grid-template-columns: 260px 1fr;
   gap: 24px;
