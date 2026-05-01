@@ -1,13 +1,21 @@
+import { ToastContainer } from 'react-toastify';
+import Header from './layout/header/Header.tsx';
+import Movies from './feature/movies/components/Movies.tsx';
+import './App.css';
+import './layout/styles.css';
 
-
-import './App.css'
-
-function App() {
+const App = () => {
   return (
-      <>
-          <h1>Howdy!</h1>
-      </>
-  )
-}
+    <>
+      <ToastContainer />
+      <main>
+        <div className="container">
+          <Header />
+          <Movies />
+        </div>
+      </main>
+    </>
+  );
+};
 
-export default App
+export default App;
