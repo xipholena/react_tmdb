@@ -27,8 +27,12 @@ const MovieCard = ({ movie }: Props) => {
         }}
       >
         <div className={style.moviePoster}>
-          <img alt="movie icon" src={`${IMAGE_BASE_URL}${movie?.poster_path}`} />
-          <span className={style.movieRating}>{movie.vote_average.toFixed(1)}</span>
+          {movie?.poster_path && (
+            <img alt="movie icon" src={`${IMAGE_BASE_URL}${movie?.poster_path ?? ''}`} />
+          )}
+          <span className={style.movieRating}>
+            {Number.isFinite(movie.vote_average) ? movie.vote_average.toFixed(1) : 'N/A'}
+          </span>
         </div>
         <div className={style.movieInfo}>
           <h3 className={style.movieTitle}>{movie.title}</h3>

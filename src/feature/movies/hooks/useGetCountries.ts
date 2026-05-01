@@ -10,7 +10,7 @@ const useGetCountries = () => {
   const [error, setError] = useState<Error | null>(null);
   const { setStorageValue, getStorageValue } = useLocalStorage();
 
-  const storedCountries: Country[] = JSON.parse(getStorageValue(StorageKeys.countries) || '[]');
+  const storedCountries: Country[] = getStorageValue(StorageKeys.countries);
 
   const getCountries = useCallback(async () => {
     if (storedCountries?.length) {

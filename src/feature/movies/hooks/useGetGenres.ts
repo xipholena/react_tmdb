@@ -14,7 +14,7 @@ const useGetGenres = ({ ids }: Params) => {
   const [error, setError] = useState<Error | null>(null);
   const { setStorageValue, getStorageValue } = useLocalStorage();
 
-  const storedGenres: Genre[] = JSON.parse(getStorageValue(StorageKeys.genres) || '[]');
+  const storedGenres: Genre[] = getStorageValue(StorageKeys.genres);
 
   const getGenres = useCallback(async () => {
     if (storedGenres?.length) {

@@ -36,7 +36,7 @@ const SelectInput = ({ value, handler, options, label, size, resetOption }: Prop
         fullWidth
         size={size}
       >
-        <MenuItem>{resetOption}</MenuItem>
+        <MenuItem value="">{resetOption}</MenuItem>
         {options?.map(({ value, text }) => (
           <MenuItem key={value} value={value}>
             {text}

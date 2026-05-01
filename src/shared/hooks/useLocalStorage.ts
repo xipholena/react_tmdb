@@ -2,10 +2,18 @@ import { StorageKeys } from '../enums.ts';
 import { useCallback } from 'react';
 
 const useLocalStorage = () => {
-  const getStorageValue = useCallback(
-    (key: StorageKeys) => localStorage.getItem(StorageKeys[key]),
-    []
-  );
+  const parseStorageArray = <T>(value: string | null): T[] => {
+    try {
+      return value ? JSON.parse(value) : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const getStorageValue = useCallback(<T>(key: StorageKeys) => {
+    const value = localStorage.getItem(StorageKeys[key]);
+    return parseStorageArray<T>(value);
+  }, []);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const setStorageValue = useCallback((key: StorageKeys, value?: any) => {

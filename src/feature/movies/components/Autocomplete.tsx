@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from 'react';
 import { MoviesResponse } from '@/shared/api/interfaces.ts';
 import Genres from './Genres.tsx';
 import useClickOutside from '@/shared/hooks/useClickOutside.ts';
@@ -5,9 +6,9 @@ import style from '../styles/Autocomplete.module.css';
 
 interface Props {
   data: MoviesResponse | null;
-  setTextValue: React.Dispatch<React.SetStateAction<string>>;
-  setAutocompleteValue: React.Dispatch<React.SetStateAction<string>>;
-  setToggleAutocomplete: React.Dispatch<React.SetStateAction<boolean>>;
+  setTextValue: Dispatch<SetStateAction<string>>;
+  setAutocompleteValue: Dispatch<SetStateAction<string>>;
+  setToggleAutocomplete: Dispatch<SetStateAction<boolean>>;
 }
 
 const Autocomplete = ({
@@ -40,7 +41,9 @@ const Autocomplete = ({
           onClick={() => clickHandler(movie?.title)}
         >
           <div className={style.autocompletePoster}>
-            <img alt="movie icon" src={`https://image.tmdb.org/t/p/w92/${movie?.poster_path}`} />
+            {movie?.poster_path && (
+              <img alt="movie icon" src={`https://image.tmdb.org/t/p/w92/${movie?.poster_path}`} />
+            )}
           </div>
           <div className={style.autocompleteInfo}>
             <h4>{movie?.title}</h4>

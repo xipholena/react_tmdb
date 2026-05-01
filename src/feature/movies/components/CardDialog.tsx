@@ -1,14 +1,15 @@
+import type { Dispatch, SetStateAction } from 'react';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
 import CloseIcon from '@mui/icons-material/Close';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Movie } from '../../../shared/api/interfaces.ts';
+import { Movie } from '@/shared/api/interfaces.ts';
 import useCardDialog from '../hooks/useCardDialog.ts';
 import style from '../styles/CardDialog.module.css';
 
 interface Props {
   open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: Dispatch<SetStateAction<boolean>>;
   scroll: DialogProps['scroll'];
   movie: Movie;
 }

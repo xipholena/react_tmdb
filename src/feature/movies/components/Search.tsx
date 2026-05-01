@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from 'react';
 import { AdvancedOptions, MoviesResponse } from '@/shared/api/interfaces.ts';
 import TextInput from './TextInput.tsx';
 import Autocomplete from './Autocomplete.tsx';
@@ -12,10 +13,10 @@ interface Props {
   data: MoviesResponse | null;
   updateOptions: (key: string, value: string | number | boolean) => void;
   advancedOptions: AdvancedOptions;
-  setTextValue: React.Dispatch<React.SetStateAction<string>>;
-  setAutocompleteValue: React.Dispatch<React.SetStateAction<string>>;
-  setToggleAutocomplete: React.Dispatch<React.SetStateAction<boolean>>;
-  setTouched: React.Dispatch<React.SetStateAction<boolean>>;
+  setTextValue: Dispatch<SetStateAction<string>>;
+  setAutocompleteValue: Dispatch<SetStateAction<string>>;
+  setToggleAutocomplete: Dispatch<SetStateAction<boolean>>;
+  setTouched: Dispatch<SetStateAction<boolean>>;
 }
 
 const Search = ({
@@ -32,13 +33,14 @@ const Search = ({
   useGetGenres({});
 
   return (
-    <div className="box" onClick={() => setTouched(true)}>
+    <div className="box">
       <form>
         <div className={style.container}>
           <TextInput
             setTextValue={setTextValue}
             textValue={textValue}
             setToggleAutocomplete={setToggleAutocomplete}
+            setTouched={setTouched}
           />
 
           {toggleAutocomplete ? (

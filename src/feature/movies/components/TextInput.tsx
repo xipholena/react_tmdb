@@ -1,16 +1,19 @@
+import type { Dispatch, SetStateAction } from 'react';
 import TextField from '@mui/material/TextField';
 import useTextInput from '../hooks/useTextInput.ts';
 import style from '../styles/TextInput.module.css';
 
 interface Props {
   textValue: string;
-  setTextValue: React.Dispatch<React.SetStateAction<string>>;
-  setToggleAutocomplete: React.Dispatch<React.SetStateAction<boolean>>;
+  setTextValue: Dispatch<SetStateAction<string>>;
+  setToggleAutocomplete: Dispatch<SetStateAction<boolean>>;
+  setTouched: Dispatch<SetStateAction<boolean>>;
 }
-const TextInput = ({ setTextValue, textValue, setToggleAutocomplete }: Props) => {
+const TextInput = ({ setTextValue, textValue, setToggleAutocomplete, setTouched }: Props) => {
   const { handleChange, handleKeyDown } = useTextInput({
     setTextValue,
     setToggleAutocomplete,
+    setTouched,
   });
   return (
     <div className={style.textContainer}>

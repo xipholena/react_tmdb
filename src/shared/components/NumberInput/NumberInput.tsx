@@ -10,10 +10,10 @@ interface Props {
 const NumberInput = ({ handler, value, label, min, max }: Props) => {
   return (
     <div className={style.numberInput}>
-      <label htmlFor="basic-input">{label}</label>
+      <label htmlFor={`${label}number-input`}>{label}</label>
 
       <input
-        id="basic-input"
+        id={`${label}number-input`}
         type="number"
         value={value}
         min={min ?? undefined}

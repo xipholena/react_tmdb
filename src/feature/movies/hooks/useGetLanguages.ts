@@ -10,7 +10,7 @@ const useGetLanguages = () => {
   const [error, setError] = useState<Error | null>(null);
   const { setStorageValue, getStorageValue } = useLocalStorage();
 
-  const storedLanguages: Language[] = JSON.parse(getStorageValue(StorageKeys.languages) || '[]');
+  const storedLanguages: Language[] = getStorageValue(StorageKeys.languages);
 
   const getLanguages = useCallback(async () => {
     if (storedLanguages?.length) {
