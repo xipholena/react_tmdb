@@ -3,13 +3,14 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import SelectInput from '../../../shared/components/SelectInput.tsx';
-import NumberInput from '../../../shared/components/NumberInput/NumberInput.tsx';
-import CheckboxInput from '../../../shared/components/CheckboxInput.tsx';
-import { AdvancedOptions } from '../../../shared/api/interfaces.ts';
-import { ParameterKeys } from '../../../shared/enums.ts';
-import style from '../styles/Search.module.css';
+import SelectInput from '@/shared/components/SelectInput.tsx';
+import NumberInput from '@/shared/components/NumberInput/NumberInput.tsx';
+import CheckboxInput from '@/shared/components/CheckboxInput.tsx';
+import { AdvancedOptions } from '@/shared/api/interfaces.ts';
+import { ParameterKeys } from '@/shared/enums.ts';
 import useAdvancedSearch from '../hooks/useAdvancedSearch.ts';
+import style from '../styles/Search.module.css';
+
 interface Props {
   updateOptions: (key: string, value: string | number | boolean) => void;
   advancedOptions: AdvancedOptions;
@@ -20,16 +21,12 @@ const AdvancedSearch = ({ updateOptions, advancedOptions }: Props) => {
   return (
     <>
       <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-        >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content">
           <Typography component="span">Advanced Search Options</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <div>
-            <div className={style.advancedFilters} id="filtersContent">
+            <div className={style.advancedFilters}>
               <div className={style.field}>
                 <SelectInput
                   label="Language"

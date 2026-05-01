@@ -2,7 +2,10 @@ import { useEffect, useRef } from 'react';
 
 type EventType = MouseEvent | TouchEvent;
 
-export function useClickOutside(handler: (event: EventType) => void) {
+interface Params {
+  handler: (event: EventType) => void;
+}
+export function useClickOutside({ handler }: Params) {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const savedHandler = useRef(handler);

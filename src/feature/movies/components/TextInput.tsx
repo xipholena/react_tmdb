@@ -1,19 +1,22 @@
+import type { Dispatch, SetStateAction } from 'react';
 import TextField from '@mui/material/TextField';
-import styles from '../styles/TextInput.module.css';
 import useTextInput from '../hooks/useTextInput.ts';
+import style from '../styles/TextInput.module.css';
 
 interface Props {
-  setTextValue: (value: string) => void;
   textValue: string;
-  setToggleAutocomplete: (value: boolean) => void;
+  setTextValue: Dispatch<SetStateAction<string>>;
+  setToggleAutocomplete: Dispatch<SetStateAction<boolean>>;
+  setTouched: Dispatch<SetStateAction<boolean>>;
 }
-const TextInput = ({ setTextValue, textValue, setToggleAutocomplete }: Props) => {
+const TextInput = ({ setTextValue, textValue, setToggleAutocomplete, setTouched }: Props) => {
   const { handleChange, handleKeyDown } = useTextInput({
     setTextValue,
     setToggleAutocomplete,
+    setTouched,
   });
   return (
-    <div className={styles.textContainer}>
+    <div className={style.textContainer}>
       <TextField
         id="outlined-basic"
         label="Search for movies..."

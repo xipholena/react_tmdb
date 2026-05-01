@@ -1,16 +1,16 @@
-import { Country } from '../../../shared/api/interfaces.ts';
 import { useCallback, useEffect, useState } from 'react';
-import { fetchCountries } from '../../../shared/api/api.ts';
-import useLocalStorage from '../../../shared/hooks/useLocalStorage.ts';
-import { StorageKeys } from '../../../shared/enums.ts';
 import { toast } from 'react-toastify';
+import { Country } from '@/shared/api/interfaces.ts';
+import { fetchCountries } from '@/shared/api/api.ts';
+import { StorageKeys } from '@/shared/enums.ts';
+import useLocalStorage from '@/shared/hooks/useLocalStorage.ts';
 
 const useGetCountries = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const { setStorageValue, getStorageValue } = useLocalStorage();
 
-  const storedCountries: Country[] = JSON.parse(getStorageValue(StorageKeys.countries) || '[]');
+  const storedCountries: Country[] = getStorageValue(StorageKeys.countries);
 
   const getCountries = useCallback(async () => {
     if (storedCountries?.length) {

@@ -1,10 +1,11 @@
+import type { Dispatch, SetStateAction } from 'react';
 import { useMemo } from 'react';
-import { useDebounceValue } from '../../../shared/hooks/useDebouncedValue.ts';
-import { AdvancedOptions } from '../../../shared/api/interfaces.ts';
+import { useDebounceValue } from '@/shared/hooks/useDebouncedValue.ts';
+import { AdvancedOptions } from '@/shared/api/interfaces.ts';
 
 interface Params {
   textValue: string;
-  setAdvancedOptions: React.Dispatch<React.SetStateAction<AdvancedOptions>>;
+  setAdvancedOptions: Dispatch<SetStateAction<AdvancedOptions>>;
   advancedOptions: AdvancedOptions;
 }
 const useMovies = ({ textValue, advancedOptions, setAdvancedOptions }: Params) => {

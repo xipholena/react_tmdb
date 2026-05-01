@@ -1,14 +1,15 @@
-import * as React from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
 import CloseIcon from '@mui/icons-material/Close';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Movie } from '../../../shared/api/interfaces.ts';
+import { Movie } from '@/shared/api/interfaces.ts';
+import useCardDialog from '../hooks/useCardDialog.ts';
 import style from '../styles/CardDialog.module.css';
 
 interface Props {
   open: boolean;
-  setOpen: (arg0: boolean) => void;
+  setOpen: Dispatch<SetStateAction<boolean>>;
   scroll: DialogProps['scroll'];
   movie: Movie;
 }
@@ -16,25 +17,14 @@ interface Props {
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 const CardDialog = ({ open, setOpen, scroll, movie }: Props) => {
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const descriptionElementRef = React.useRef<HTMLElement>(null);
-  React.useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
-        descriptionElement.focus();
-      }
-    }
-  }, [open]);
-
+  useCardDialog({
+    open,
+  });
   return (
-    <React.Fragment>
+    <>
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={() => setOpen(false)}
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
@@ -49,7 +39,9 @@ const CardDialog = ({ open, setOpen, scroll, movie }: Props) => {
           )}
           <CloseIcon
             className={style.movieCardClose}
-            onClick={handleClose}
+            onClick={() => {
+              setOpen(false);
+            }}
             aria-label="close dialog"
           />
 
@@ -111,7 +103,7 @@ const CardDialog = ({ open, setOpen, scroll, movie }: Props) => {
           </div>
         </div>
       </Dialog>
-    </React.Fragment>
+    </>
   );
 };
 export default CardDialog;

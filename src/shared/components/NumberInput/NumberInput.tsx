@@ -1,4 +1,3 @@
-import React from 'react';
 import style from './NumberInput.module.css';
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,10 +10,10 @@ interface Props {
 const NumberInput = ({ handler, value, label, min, max }: Props) => {
   return (
     <div className={style.numberInput}>
-      <label htmlFor="basic-input">{label}</label>
+      <label htmlFor={`${label}number-input`}>{label}</label>
 
       <input
-        id="basic-input"
+        id={`${label}number-input`}
         type="number"
         value={value}
         min={min ?? undefined}

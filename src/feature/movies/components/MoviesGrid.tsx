@@ -1,7 +1,6 @@
-import style from '../styles/MoviesGrid.module.css';
+import { MoviesResponse } from '@/shared/api/interfaces.ts';
 import MovieCard from './MovieCard.tsx';
-import { MoviesResponse } from '../../../shared/api/interfaces.ts';
-
+import style from '../styles/MoviesGrid.module.css';
 interface Props {
   data: MoviesResponse | null;
 }

@@ -1,13 +1,14 @@
-import style from '../styles/Autocomplete.module.css';
-import { MoviesResponse } from '../../../shared/api/interfaces.ts';
-import useClickOutside from '../../../shared/hooks/useClickOutside.ts';
+import type { Dispatch, SetStateAction } from 'react';
+import { MoviesResponse } from '@/shared/api/interfaces.ts';
 import Genres from './Genres.tsx';
+import useClickOutside from '@/shared/hooks/useClickOutside.ts';
+import style from '../styles/Autocomplete.module.css';
 
 interface Props {
   data: MoviesResponse | null;
-  setTextValue: (value: string) => void;
-  setAutocompleteValue: (value: string) => void;
-  setToggleAutocomplete: (value: boolean) => void;
+  setTextValue: Dispatch<SetStateAction<string>>;
+  setAutocompleteValue: Dispatch<SetStateAction<string>>;
+  setToggleAutocomplete: Dispatch<SetStateAction<boolean>>;
 }
 
 const Autocomplete = ({
@@ -16,8 +17,10 @@ const Autocomplete = ({
   setAutocompleteValue,
   setToggleAutocomplete,
 }: Props) => {
-  const { ref } = useClickOutside(() => {
-    setToggleAutocomplete(false);
+  const { ref } = useClickOutside({
+    handler: () => {
+      setToggleAutocomplete(false);
+    },
   });
 
   if (!data) return null;
@@ -30,7 +33,7 @@ const Autocomplete = ({
   };
 
   return (
-    <div ref={ref} className={style.autocompleteDropdown} id="autocompleteDropdown">
+    <div ref={ref} className={style.autocompleteDropdown}>
       {data?.results?.map((movie) => (
         <div
           key={movie.id}
@@ -38,7 +41,9 @@ const Autocomplete = ({
           onClick={() => clickHandler(movie?.title)}
         >
           <div className={style.autocompletePoster}>
-            <img alt="movie icon" src={`https://image.tmdb.org/t/p/w92/${movie?.poster_path}`} />
+            {movie?.poster_path && (
+              <img alt="movie icon" src={`https://image.tmdb.org/t/p/w92/${movie?.poster_path}`} />
+            )}
           </div>
           <div className={style.autocompleteInfo}>
             <h4>{movie?.title}</h4>
